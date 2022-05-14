@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/yellow"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/task_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="№"
+        android:textSize="30sp"
+        android:textStyle="bold|italic" />
+
+        <!--<androidx.fragment.app.FragmentContainerView
+        android:id="@+id/cont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/ans_fragment"
+        android:layout_marginVertical="0dp"
+        android:layout_marginBottom="0dp"
+        class="com.example.final_exam.AnsFragment"
+      />-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="20sp"
+        android:textStyle="bold|italic"
+        android:id="@+id/prav"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="30sp"
+        android:textStyle="italic"
+        android:id="@+id/verno"/>
+
+    <TextView
+        android:id="@+id/task_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="20dp"
+        android:text=""
+        android:textSize="15sp" />
+
+    <ImageView
+        android:id="@+id/photo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:srcCompat="@tools:sample/avatars"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/otvet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ответ:"
+            android:textSize="30sp"
+            android:textStyle="bold|italic" />
+
+        <EditText
+            android:id="@+id/task_answer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLength="100"
+            android:hint="Введите ответ"
+            />
+            <Button
+                android:id="@+id/save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/yellow"
+                android:textColor="@color/black"
+                android:text="Сохранить" />
+    </LinearLayout>
+
+
+
+</LinearLayout>

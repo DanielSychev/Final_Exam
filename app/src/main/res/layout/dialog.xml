@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/yellow">
+
+    <TextView
+        android:id="@+id/work_end"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="     Вы уверены, что хотите завершить работу?"
+        android:textSize="26dp"
+        android:textStyle="bold" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_marginTop="5dp"
+            android:id="@+id/yes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/ButtonStyle"
+            android:text="Да"
+            android:layout_marginLeft="90dp"
+            android:layout_gravity="top|left"
+            />
+
+        <Button
+            android:layout_marginTop="5dp"
+            android:id="@+id/no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Нет"
+            style="@style/ButtonStyle"
+            android:layout_marginRight="90dp"
+            android:layout_gravity="top|right"/>
+    </FrameLayout>
+</LinearLayout>

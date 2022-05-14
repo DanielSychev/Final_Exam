@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OneTask"
+    android:background="@color/yellow"
+    android:orientation="vertical">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:backgroundTint="@color/yellow"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/go_back"
+            android:src="@drawable/go_back"
+            android:layout_gravity="top|left"
+            />
+        <ImageButton
+            android:backgroundTint="@color/yellow"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/home"
+            android:src="@drawable/home"
+            android:layout_gravity="top|right" />
+
+    </FrameLayout>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listView"
+        />
+
+</LinearLayout>
