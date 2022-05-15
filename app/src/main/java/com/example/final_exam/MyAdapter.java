@@ -58,7 +58,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
     String []correct_answers=new String[num];
     int []rnd=new int[num];
     int []balls=new int[num];
-    AnsFragment fragment;
     Boolean edit=true;
     Button end;
     TextView timer;

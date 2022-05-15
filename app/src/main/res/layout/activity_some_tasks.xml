@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SomeTasks"
-    android:background="@color/yellow"
+    android:background="@drawable/bitmap"
     android:orientation="vertical">
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageButton
-            android:backgroundTint="@color/yellow"
+            android:background="@android:color/transparent"
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
             android:layout_width="50dp"
@@ -21,7 +21,7 @@
             android:layout_gravity="top|left"
             />
         <ImageButton
-            android:backgroundTint="@color/yellow"
+            android:background="@android:color/transparent"
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
             android:layout_width="50dp"

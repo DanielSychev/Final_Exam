@@ -11,7 +11,6 @@ buildscript {
         // in the individual module build.gradle files
     }
 }
-
 //allprojects {
 //    repositories {
 //        // Check that you have the following line (if not, add it):

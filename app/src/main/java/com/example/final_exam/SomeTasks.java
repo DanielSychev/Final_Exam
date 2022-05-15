@@ -58,6 +58,7 @@ public class SomeTasks extends AppCompatActivity implements View.OnClickListener
             break;
             case R.id.go_back:
                 i=new Intent(SomeTasks.this, Generate.class);
+                i.putExtra("subject", subject);
             break;
         }
         startActivity(i);

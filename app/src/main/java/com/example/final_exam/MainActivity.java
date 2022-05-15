@@ -19,7 +19,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-    Button inf, phis;
+    ImageButton inf, phis;
     ImageButton exit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

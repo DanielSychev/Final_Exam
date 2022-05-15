@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/yellow">
+    android:background="@drawable/bitmap">
 
     <Button
         style="@style/ButtonStyle"
@@ -41,9 +41,22 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:adjustViewBounds="true"
-        android:backgroundTint="@color/yellow"
+        android:background="@android:color/transparent"
         android:scaleType="fitCenter"
         android:src="@drawable/home"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/subject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="55dp"
+        android:fontFamily="@font/shrift2"
+        android:textFontWeight="1000"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
