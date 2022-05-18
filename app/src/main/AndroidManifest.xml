@@ -13,25 +13,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Final_Exam">
         <activity
+            android:name=".LastResults"
+            android:exported="false" />
+        <activity
             android:name=".OneTask"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
             android:name=".SomeTasks"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Generate"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Phis"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Inf"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

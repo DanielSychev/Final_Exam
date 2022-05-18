@@ -3,7 +3,9 @@ package com.example.final_exam;
 import android.animation.LayoutTransition;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -47,6 +49,8 @@ import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -66,6 +70,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
     private final LayoutInflater inflater;
     Example[]objects;
     TextView result;
+    DBHelper dbHelper;
 
     public MyAdapter(Context context, Example[] objects, String subject) {
         sub=subject;
@@ -76,6 +81,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
         else {
             num=20;
         }
+
+        dbHelper=new DBHelper(context);
 
         myContext=context;
         this.objects=objects;
@@ -127,6 +134,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
         return summa;
     }
 
+    public void databasesql(int k){
+        SQLiteDatabase database=dbHelper.getWritableDatabase();
+        //dbHelper.onUpgrade(database, DBHelper.DATABASE_VERSION, DBHelper.DATABASE_VERSION);
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DBHelper.BALLS, k);
+        contentValues.put(DBHelper.SUBJECT, sub);
+        contentValues.put(DBHelper.DATE, new SimpleDateFormat("dd.MM.yyyy,HH:mm:ss").format(new Date()));
+        database.insert(DBHelper.DATABASE_NAME, null, contentValues);
+    }
+
+
     @Override
     public void onClick(View v) {
         if (cod == false) {
@@ -151,6 +169,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
                     end.setVisibility(View.INVISIBLE);
                     dialog.dismiss();
                     MyAdapter.this.notifyDataSetChanged();
+                    databasesql(k);
                 }
             });
 
@@ -169,6 +188,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
             end.setVisibility(View.INVISIBLE);
             result.setText(Integer.toString(sum()));
             MyAdapter.this.notifyDataSetChanged();
+            int k=sum();
+            databasesql(k);
         }
 
     }

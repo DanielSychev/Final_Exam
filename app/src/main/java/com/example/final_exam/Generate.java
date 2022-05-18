@@ -10,8 +10,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class Generate extends AppCompatActivity implements View.OnClickListener {
-    Button create, see;
-    ImageButton home;
+    Button last_results;
+    ImageButton create, see, home;
     String subject;
     TextView sub;
     @Override
@@ -22,6 +22,7 @@ public class Generate extends AppCompatActivity implements View.OnClickListener 
         create=findViewById(R.id.create);
         see=findViewById(R.id.see);
         sub=findViewById(R.id.subject);
+        last_results=findViewById(R.id.last_results);
         if(subject.equals("inf")){
             sub.setText("Информатика");
         }
@@ -32,6 +33,7 @@ public class Generate extends AppCompatActivity implements View.OnClickListener 
         create.setOnClickListener(this);
         see.setOnClickListener(this);
         home.setOnClickListener(this);
+        last_results.setOnClickListener(this);
 
     }
 
@@ -47,6 +49,9 @@ public class Generate extends AppCompatActivity implements View.OnClickListener 
             break;
             case R.id.home:
                 i=new Intent(Generate.this, MainActivity.class);
+            break;
+            case R.id.last_results:
+                i=new Intent(Generate.this, LastResults.class);
             break;
         }
         i.putExtra("subject", subject);
