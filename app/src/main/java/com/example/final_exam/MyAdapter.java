@@ -114,12 +114,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
 
     public void fill(){
         for (int i=0;i<num;i++){
-            if(sub.equals("phis")){
+            //if(sub.equals("phis")){
                 rnd[i]=(int) ((Math.random() * 2) + 1);
-            }
-            else{
-                rnd[i]=1;
-            }
+            //}
+            //else{
+            //    rnd[i]=1;
+            //}
             answers[i]="";
             correct_answers[i]="";
             balls[i]=0;
@@ -213,12 +213,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
                 Example example = snapshot.getValue(Example.class);
                 holder.task_text.setText(example.getText().replace("n", "\n"));
                 correct_answers[position] = example.getAnswer();
-                /*if(example.getAnswer()%1==0){
-                    correct_answers[position]=Integer.toString((int)example.getAnswer());
-                }
-                else{
-                    correct_answers[position]=Double.toString(example.getAnswer());
-                }*/
             }
 
             @Override
@@ -240,7 +234,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
                     }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    holder.imageView.setImageDrawable(null);
+
                 }
             });
         } catch (IOException e) {

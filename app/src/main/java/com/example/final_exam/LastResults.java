@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,15 +35,18 @@ public class LastResults extends AppCompatActivity implements View.OnClickListen
     int num;
     String sub;
     SQLiteDatabase database;
+    TextView sred_ball;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_last_results);
-        String sub = getIntent().getStringExtra("subject");
+        sub = getIntent().getStringExtra("subject");
         dbHelper=new DBHelper(this);
         database=dbHelper.getWritableDatabase();
-        //ContentValues contentValues = new ContentValues();
+
+        long result = 0, kolvo = 0;
+
         arrayList=new ArrayList<>();
         Cursor cursor=database.query(DBHelper.DATABASE_NAME, null, "subject = ?", new String[]{sub}, null, null, null);
         if(cursor.moveToFirst()){
@@ -53,6 +58,8 @@ public class LastResults extends AppCompatActivity implements View.OnClickListen
             do{
                 DatabaseClass temp=new DatabaseClass("", -1, "");
                 temp.balls=cursor.getInt(ballsIndex);
+                result+=temp.balls;
+                kolvo+=1;
                 temp.subject=cursor.getString(subjectIndex);
                 temp.date=cursor.getString(dateIndex);
                 if(temp.subject.equals("inf")){
@@ -73,6 +80,19 @@ public class LastResults extends AppCompatActivity implements View.OnClickListen
         adapter=new LastResultsAdapter(this, arrayList);
         listView.setAdapter(adapter);
 
+        sred_ball=findViewById(R.id.sred_ball);
+        if(kolvo!=0){
+            double k = result/kolvo;
+            DecimalFormat REAL_FORMATTER = new DecimalFormat("0.###");
+            sred_ball.setText("Средний результат:" + REAL_FORMATTER.format(k));
+            Log.d("res", Double.toString(k));
+        }
+        else {sred_ball.setText("Пока что результатов нет!");}
+
+        TextView subject=findViewById(R.id.subject);
+        if(sub.equals("inf")){subject.setText("Информатика");}
+        else {subject.setText("Физика");}
+
         home=findViewById(R.id.home);
         back=findViewById(R.id.go_back);
         clear=findViewById(R.id.clear);
@@ -90,11 +110,14 @@ public class LastResults extends AppCompatActivity implements View.OnClickListen
                 startActivity(i);
             break;
             case R.id.go_back:
-                finish();
+                Intent k=new Intent(LastResults.this, Generate.class);
+                k.putExtra("subject", sub);
+                startActivity(k);
             break;
             case R.id.clear:
                 database.delete(DBHelper.DATABASE_NAME, "subject = ?", new String[]{sub});
                 adapter.clear();
+                sred_ball.setText("Пока что результатов нет!");
             break;
         }
     }
@@ -127,7 +150,7 @@ public class LastResults extends AppCompatActivity implements View.OnClickListen
             TextView ballov=convertView.findViewById(R.id.balls);
             TextView date=convertView.findViewById(R.id.date);
             TextView subject=convertView.findViewById(R.id.s);
-            ballov.setText(Integer.toString(arrayList.get(position).balls) + " баллов из " + Integer.toString(num));
+            ballov.setText(Integer.toString(arrayList.get(position).balls) + " балл(ов)/(а) из " + Integer.toString(num));
             date.setText(arrayList.get(position).date);
             subject.setText(arrayList.get(position).subject);
             return convertView;

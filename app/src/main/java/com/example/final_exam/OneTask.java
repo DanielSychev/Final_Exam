@@ -51,12 +51,13 @@ public class OneTask extends AppCompatActivity implements View.OnClickListener {
         Bundle arguments = getIntent().getExtras();
         number = (int) arguments.get("num");
         subject = getIntent().getStringExtra("subject");
-        if(subject.equals("phis")){
+        k=2;
+        /*if(subject.equals("phis")){
             k=2;
         }
         else{
             k=1;
-        }
+        }*/
 
         Example[] array = new Example[k];
         for(int i=0;i<k;i++) {

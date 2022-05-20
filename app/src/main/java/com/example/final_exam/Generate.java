@@ -10,8 +10,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class Generate extends AppCompatActivity implements View.OnClickListener {
-    Button last_results;
-    ImageButton create, see, home;
+    ImageButton create, see, home, last_results;
     String subject;
     TextView sub;
     @Override
