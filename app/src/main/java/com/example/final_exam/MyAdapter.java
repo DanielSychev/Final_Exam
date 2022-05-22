@@ -114,12 +114,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
 
     public void fill(){
         for (int i=0;i<num;i++){
-            //if(sub.equals("phis")){
-                rnd[i]=(int) ((Math.random() * 2) + 1);
-            //}
-            //else{
-            //    rnd[i]=1;
-            //}
+            rnd[i]=(int) ((Math.random() * 2) + 1);
             answers[i]="";
             correct_answers[i]="";
             balls[i]=0;
@@ -228,13 +223,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
                     .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                            holder.imageView.setVisibility(View.VISIBLE);
                             Bitmap bitmap = BitmapFactory.decodeFile(localfile.getAbsolutePath());
                             holder.imageView.setImageBitmap(bitmap);
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-
+                    holder.imageView.setVisibility(View.GONE);
                 }
             });
         } catch (IOException e) {

@@ -45,7 +45,8 @@ public class LastResults extends AppCompatActivity implements View.OnClickListen
         dbHelper=new DBHelper(this);
         database=dbHelper.getWritableDatabase();
 
-        long result = 0, kolvo = 0;
+        double result = 0;
+        double kolvo = 0;
 
         arrayList=new ArrayList<>();
         Cursor cursor=database.query(DBHelper.DATABASE_NAME, null, "subject = ?", new String[]{sub}, null, null, null);
@@ -56,12 +57,14 @@ public class LastResults extends AppCompatActivity implements View.OnClickListen
             int dateIndex=cursor.getColumnIndex(DBHelper.DATE);
 
             do{
-                DatabaseClass temp=new DatabaseClass("", -1, "");
+                DatabaseClass temp=new DatabaseClass("", 0, "");
                 temp.balls=cursor.getInt(ballsIndex);
-                result+=temp.balls;
-                kolvo+=1;
                 temp.subject=cursor.getString(subjectIndex);
                 temp.date=cursor.getString(dateIndex);
+
+                result+=temp.balls;
+                kolvo+=1;
+
                 if(temp.subject.equals("inf")){
                     temp.subject="Информатика";
                     num=10;
@@ -71,7 +74,6 @@ public class LastResults extends AppCompatActivity implements View.OnClickListen
                     num=20;
                 }
                 arrayList.add(temp);
-                //textView.setText(Integer.toString(cursor.getInt(ballsIndex)));
             }while(cursor.moveToNext());
             cursor.close();
         }
@@ -83,7 +85,7 @@ public class LastResults extends AppCompatActivity implements View.OnClickListen
         sred_ball=findViewById(R.id.sred_ball);
         if(kolvo!=0){
             double k = result/kolvo;
-            DecimalFormat REAL_FORMATTER = new DecimalFormat("0.###");
+            DecimalFormat REAL_FORMATTER = new DecimalFormat("0.##");
             sred_ball.setText("Средний результат:" + REAL_FORMATTER.format(k));
             Log.d("res", Double.toString(k));
         }

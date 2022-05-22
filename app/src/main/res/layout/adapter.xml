@@ -15,15 +15,6 @@
         android:textSize="30sp"
         android:textStyle="bold|italic" />
 
-        <!--<androidx.fragment.app.FragmentContainerView
-        android:id="@+id/cont"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout="@layout/ans_fragment"
-        android:layout_marginVertical="0dp"
-        android:layout_marginBottom="0dp"
-        class="com.example.final_exam.AnsFragment"
-      />-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
