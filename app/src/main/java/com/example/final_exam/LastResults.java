@@ -112,9 +112,7 @@ public class LastResults extends AppCompatActivity implements View.OnClickListen
                 startActivity(i);
             break;
             case R.id.go_back:
-                Intent k=new Intent(LastResults.this, Generate.class);
-                k.putExtra("subject", sub);
-                startActivity(k);
+                finish();
             break;
             case R.id.clear:
                 database.delete(DBHelper.DATABASE_NAME, "subject = ?", new String[]{sub});

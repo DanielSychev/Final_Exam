@@ -39,6 +39,7 @@ public class Generate extends AppCompatActivity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         Intent i = new Intent();
+        boolean finish=false;
         switch (v.getId()){
             case R.id.create:
                 i=new Intent(Generate.this, Phis.class);
@@ -47,13 +48,17 @@ public class Generate extends AppCompatActivity implements View.OnClickListener 
                 i=new Intent(Generate.this, SomeTasks.class);
             break;
             case R.id.home:
-                i=new Intent(Generate.this, MainActivity.class);
+                //i=new Intent(Generate.this, MainActivity.class);
+                finish();
+                finish=true;
             break;
             case R.id.last_results:
                 i=new Intent(Generate.this, LastResults.class);
             break;
         }
-        i.putExtra("subject", subject);
-        startActivity(i);
+        if(finish==false){
+            i.putExtra("subject", subject);
+            startActivity(i);
+        }
     }
 }

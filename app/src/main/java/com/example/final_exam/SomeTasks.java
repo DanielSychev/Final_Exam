@@ -55,13 +55,12 @@ public class SomeTasks extends AppCompatActivity implements View.OnClickListener
         switch(v.getId()){
             case R.id.home:
                 i=new Intent(SomeTasks.this, MainActivity.class);
+                startActivity(i);
             break;
             case R.id.go_back:
-                i=new Intent(SomeTasks.this, Generate.class);
-                i.putExtra("subject", subject);
+                finish();
             break;
         }
-        startActivity(i);
     }
 
     public class SomeTasksAdapter extends ArrayAdapter<Integer> implements View.OnTouchListener {
@@ -91,7 +90,7 @@ public class SomeTasks extends AppCompatActivity implements View.OnClickListener
             intent.putExtra("num", i);
             intent.putExtra("subject", subject);
             startActivity(intent);
-            return true;
+            return false;
         }
     }
 

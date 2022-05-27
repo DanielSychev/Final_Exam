@@ -52,12 +52,6 @@ public class OneTask extends AppCompatActivity implements View.OnClickListener {
         number = (int) arguments.get("num");
         subject = getIntent().getStringExtra("subject");
         k=2;
-        /*if(subject.equals("phis")){
-            k=2;
-        }
-        else{
-            k=1;
-        }*/
 
         Example[] array = new Example[k];
         for(int i=0;i<k;i++) {
@@ -80,13 +74,12 @@ public class OneTask extends AppCompatActivity implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.home:
                 i = new Intent(OneTask.this, MainActivity.class);
+                startActivity(i);
                 break;
             case R.id.go_back:
-                i = new Intent(OneTask.this, SomeTasks.class);
-                i.putExtra("subject", subject);
+                finish();
                 break;
         }
-        startActivity(i);
     }
     public class OneTaskAdapter extends ArrayAdapter<Example>{
 
